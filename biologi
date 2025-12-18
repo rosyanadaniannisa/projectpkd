@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Pembelajaran Biologi Interaktif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-seedling"></i> Game Pembelajaran Biologi</h1>
+            <p class="subtitle">Belajar biologi dengan cara yang menyenangkan dan interaktif melalui kuis, diagram, dan simulasi</p>
+        </header>
+        
+        <div class="game-container">
+            <div class="sidebar">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="home">
+                        <i class="fas fa-home"></i> Beranda
+                    </button>
+                    <button class="tab-button" data-tab="cell">
+                        <i class="fas fa-microscope"></i> Struktur Sel
+                    </button>
+                    <button class="tab-button" data-tab="organ">
+                        <i class="fas fa-heartbeat"></i> Sistem Organ
+                    </button>
+                    <button class="tab-button" data-tab="classification">
+                        <i class="fas fa-tree"></i> Klasifikasi Makhluk Hidup
+                    </button>
+                    <button class="tab-button" data-tab="quiz">
+                        <i class="fas fa-question-circle"></i> Kuis Biologi
+                    </button>
+                </div>
+                
+                <div class="user-info">
+                    <h3><i class="fas fa-user-graduate"></i> Statistik Pembelajaran</h3>
+                    <div class="score">
+                        <span>Skor Kuis:</span>
+                        <span id="quiz-score">0</span>
+                    </div>
+                    <div class="score">
+                        <span>Tingkat Kesulitan:</span>
+                        <span id="difficulty">Pemula</span>
+                    </div>
+                    <div class="score">
+                        <span>Progres Belajar:</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="learning-progress"></div>
+                    </div>
+                </div>
+                
+                <div class="game-instructions">
+                    <h3><i class="fas fa-info-circle"></i> Cara Bermain</h3>
+                    <ol class="instructions-list">
+                        <li>Pilih topik pembelajaran dari menu di atas</li>
+                        <li>Pelajari materi yang disajikan</li>
+                        <li>Ikuti kuis untuk menguji pemahaman</li>
+                        <li>Klik bagian diagram sel untuk informasi detail</li>
+                        <li>Lacak progres belajar Anda di panel statistik</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <!-- Beranda -->
+                <div id="home" class="tab-content active">
+                    <h2>Selamat Datang di Game Pembelajaran Biologi!</h2>
+                    <p>Biologi adalah ilmu yang mempelajari tentang kehidupan dan makhluk hidup. Melalui game interaktif ini, Anda akan belajar tentang berbagai konsep biologi dengan cara yang menyenangkan.</p>
+                    
+                    <div class="quiz-container">
+                        <h3>Mari kita mulai perjalanan belajar biologi!</h3>
+                        <p>Pilihlah topik dari menu di sebelah kiri untuk mulai belajar. Setiap topik berisi:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
+                            <li>Penjelasan materi yang mudah dipahami</li>
+                            <li>Diagram dan ilustrasi interaktif</li>
+                            <li>Kuis untuk menguji pemahaman Anda</li>
+                            <li>Simulasi dan aktivitas pembelajaran</li>
+                        </ul>
+                        <p style="margin-top: 15px;">Biologi tidak lagi membosankan dengan pendekatan pembelajaran interaktif ini!</p>
+                        
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="start-learning">
+                                <i class="fas fa-play"></i> Mulai Belajar
+                            </button>
+                            <button class="btn btn-secondary" id="quick-quiz">
+                                <i class="fas fa-bolt"></i> Kuis Cepat
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="cell-diagram">
+                        <div class="cell">
+                            <div class="nucleus"></div>
+                            <div class="mitochondria"></div>
+                            <div class="golgi"></div>
+                            <div class="organelle-label" style="top: 50%; left: 50%; transform: translate(-50%, -80px);">Nukleus</div>
+                            <div class="organelle-label" style="top: 30%; left: 70%; transform: translateX(-50%);">Mitokondria</div>
+                            <div class="organelle-label" style="top: 70%; left: 20%; transform: translateX(-50%);">Aparatus Golgi</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Struktur Sel -->
+                <div id="cell" class="tab-content">
+                    <h2>Struktur Sel</h2>
+                    <p>Sel adalah unit struktural dan fungsional terkecil dari makhluk hidup. Setiap sel memiliki organel-organel yang memiliki fungsi khusus untuk mendukung kehidupan.</p>
+                    
+                    <div class="cell-diagram">
+                        <div class="cell">
+                            <div class="nucleus"></div>
+                            <div class="mitochondria"></div>
+                            <div class="golgi"></div>
+                            <div class="organelle-label" style="top: 50%; left: 50%; transform: translate(-50%, -80px);" data-organelle="nucleus">Nukleus</div>
+                            <div class="organelle-label" style="top: 30%; left: 70%; transform: translateX(-50%);" data-organelle="mitochondria">Mitokondria</div>
+                            <div class="organelle-label" style="top: 70%; left: 20%; transform: translateX(-50%);" data-organelle="golgi">Aparatus Golgi</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-container">
+                        <div class="question">Organel manakah yang berfungsi sebagai pusat kendali sel?</div>
+                        <div class="options">
+                            <div class="option" data-answer="a">A. Mitokondria</div>
+                            <div class="option" data-answer="b">B. Nukleus</div>
+                            <div class="option" data-answer="c">C. Ribosom</div>
+                            <div class="option" data-answer="d">D. Aparatus Golgi</div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-answer">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-question">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                </div>
+                
+                <!-- Sistem Organ -->
+                <div id="organ" class="tab-content">
+                    <h2>Sistem Organ pada Manusia</h2>
+                    <p>Tubuh manusia terdiri dari berbagai sistem organ yang bekerja sama untuk mempertahankan homeostasis. Setiap sistem memiliki fungsi khusus yang vital bagi kelangsungan hidup.</p>
+                    
+                    <div class="quiz-container">
+                        <div class="question">Sistem organ manakah yang bertanggung jawab untuk pertukaran gas oksigen dan karbon dioksida?</div>
+                        <div class="options">
+                            <div class="option" data-answer="a">A. Sistem Pencernaan</div>
+                            <div class="option" data-answer="b">B. Sistem Pernapasan</div>
+                            <div class="option" data-answer="c">C. Sistem Saraf</div>
+                            <div class="option" data-answer="d">D. Sistem Ekskresi</div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-answer-organ">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-question-organ">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; background-color: #e3f2fd; padding: 20px; border-radius: 15px;">
+                        <h3 style="color: #1565c0;">Fakta Menarik tentang Sistem Organ:</h3>
+                        <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
+                            <li>Sistem pencernaan manusia dapat mencapai panjang 9 meter dari mulut hingga anus</li>
+                            <li>Jantung berdetak sekitar 100.000 kali per hari</li>
+                            <li>Otak manusia mengandung sekitar 86 miliar neuron</li>
+                            <li>Paru-paru memiliki luas permukaan sekitar 70 m², setara dengan setengah lapangan tenis</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Klasifikasi Makhluk Hidup -->
+                <div id="classification" class="tab-content">
+                    <h2>Klasifikasi Makhluk Hidup</h2>
+                    <p>Klasifikasi makhluk hidup adalah pengelompokan organisme berdasarkan persamaan dan perbedaan karakteristiknya. Sistem klasifikasi modern didasarkan pada taksonomi Linnaeus.</p>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                        <div style="flex: 1; min-width: 250px; background-color: #f3e5f5; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: #7b1fa2;">Kingdom Animalia</h3>
+                            <p>Multiseluler, heterotrof, dapat bergerak aktif. Contoh: manusia, burung, ikan, serangga.</p>
+                        </div>
+                        <div style="flex: 1; min-width: 250px; background-color: #e8f5e9; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: #2e7d32;">Kingdom Plantae</h3>
+                            <p>Multiseluler, autotrof (fotosintesis), tidak dapat bergerak aktif. Contoh: pohon, rumput, lumut.</p>
+                        </div>
+                        <div style="flex: 1; min-width: 250px; background-color: #fff3e0; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: #ef6c00;">Kingdom Fungi</h3>
+                            <p>Multiseluler atau uniseluler, heterotrof, dinding sel dari kitin. Contoh: jamur, ragi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-container" style="margin-top: 30px;">
+                        <div class="question">Manakah dari berikut ini yang termasuk dalam Kingdom Plantae?</div>
+                        <div class="options">
+                            <div class="option" data-answer="a">A. Jamur merang</div>
+                            <div class="option" data-answer="b">B. Pohon mangga</div>
+                            <div class="option" data-answer="c">C. Bakteri Escherichia coli</div>
+                            <div class="option" data-answer="d">D. Harimau sumatera</div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-answer-classification">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-question-classification">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                </div>
+                
+                <!-- Kuis Biologi -->
+                <div id="quiz" class="tab-content">
+                    <h2>Kuis Biologi Interaktif</h2>
+                    <p>Uji pemahaman Anda tentang konsep-konsep biologi dengan kuis interaktif ini. Jawablah pertanyaan-pertanyaan berikut untuk mengukur tingkat pengetahuan Anda.</p>
+                    
+                    <div class="quiz-container">
+                        <div id="quiz-question-container">
+                            <div class="question" id="quiz-question">Organel sel manakah yang berfungsi sebagai tempat respirasi seluler?</div>
+                            <div class="options" id="quiz-options">
+                                <div class="option" data-answer="a">A. Lisosom</div>
+                                <div class="option" data-answer="b">B. Mitokondria</div>
+                                <div class="option" data-answer="c">C. Retikulum Endoplasma</div>
+                                <div class="option" data-answer="d">D. Badan Golgi</div>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-quiz-answer">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-quiz-question">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result" id="quiz-result"></div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="background-color: #e1f5fe; padding: 15px; border-radius: 15px; flex: 1; margin-right: 20px;">
+                            <h4 style="color: #0277bd;">Statistik Kuis</h4>
+                            <p>Jawaban Benar: <span id="correct-answers">0</span></p>
+                            <p>Jawaban Salah: <span id="wrong-answers">0</span></p>
+                            <p>Pertanyaan Tersisa: <span id="questions-left">5</span></p>
+                        </div>
+                        <button class="btn btn-primary" id="restart-quiz" style="height: fit-content;">
+                            <i class="fas fa-redo"></i> Mulai Kuis Baru
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Game Pembelajaran Biologi Interaktif &copy; 2023 | Dibuat untuk pembelajaran HTML, CSS, dan JavaScript</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Ilustrasi dan konten edukasi biologi untuk tujuan pembelajaran</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+// Data untuk kuis
+const quizData = {
+    cell: [
+        {
+            question: "Organel manakah yang berfungsi sebagai pusat kendali sel?",
+            options: ["Mitokondria", "Nukleus", "Ribosom", "Aparatus Golgi"],
+            correctAnswer: 1
+        },
+        {
+            question: "Organel apakah yang bertanggung jawab untuk menghasilkan energi dalam bentuk ATP?",
+            options: ["Lisosom", "Mitokondria", "Retikulum Endoplasma", "Badan Golgi"],
+            correctAnswer: 1
+        },
+        {
+            question: "Organel manakah yang berfungsi dalam sintesis protein?",
+            options: ["Mitokondria", "Nukleus", "Ribosom", "Vakuola"],
+            correctAnswer: 2
+        }
+    ],
+    organ: [
+        {
+            question: "Sistem organ manakah yang bertanggung jawab untuk pertukaran gas oksigen dan karbon dioksida?",
+            options: ["Sistem Pencernaan", "Sistem Pernapasan", "Sistem Saraf", "Sistem Ekskresi"],
+            correctAnswer: 1
+        },
+        {
+            question: "Organ manakah yang merupakan bagian dari sistem pencernaan?",
+            options: ["Jantung", "Paru-paru", "Otak", "Lambung"],
+            correctAnswer: 3
+        },
+        {
+            question: "Sistem organ apakah yang mengatur respons tubuh terhadap rangsangan?",
+            options: ["Sistem Peredaran Darah", "Sistem Saraf", "Sistem Endokrin", "Sistem Rangka"],
+            correctAnswer: 1
+        }
+    ],
+    classification: [
+        {
+            question: "Manakah dari berikut ini yang termasuk dalam Kingdom Plantae?",
+            options: ["Jamur merang", "Pohon mangga", "Bakteri Escherichia coli", "Harimau sumatera"],
+            correctAnswer: 1
+        },
+        {
+            question: "Makhluk hidup manakah yang termasuk dalam Kingdom Animalia?",
+            options: ["Lumut", "Paku-pakuan", "Burung merpati", "Bakteri"],
+            correctAnswer: 2
+        },
+        {
+            question: "Organisme apakah yang termasuk dalam Kingdom Fungi?",
+            options: ["Pohon jati", "Jamur tiram", "Ikan mas", "Bunga mawar"],
+            correctAnswer: 1
+        }
+    ],
+    general: [
+        {
+            question: "Organel sel manakah yang berfungsi sebagai tempat respirasi seluler?",
+            options: ["Lisosom", "Mitokondria", "Retikulum Endoplasma", "Badan Golgi"],
+            correctAnswer: 1
+        },
+        {
+            question: "Proses fotosintesis terjadi pada bagian tumbuhan yang bernama?",
+            options: ["Akar", "Batang", "Daun", "Bunga"],
+            correctAnswer: 2
+        },
+        {
+            question: "Bagian sel yang berfungsi sebagai pelindung dan pengatur keluar masuknya zat adalah?",
+            options: ["Membran sel", "Dinding sel", "Sitoplasma", "Nukleus"],
+            correctAnswer: 0
+        }
+    ]
+};
+
+// Variabel global
+let currentTab = 'home';
+let userScore = 0;
+let learningProgress = 0;
+let currentQuestionIndex = 0;
+let currentQuizType = 'cell';
+let correctAnswers = 0;
+let wrongAnswers = 0;
+let questionsAnswered = 0;
+const totalQuestions = 5;
+
+// Fungsi untuk mengganti tab
+function switchTab(tabId) {
+    // Nonaktifkan semua tab
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+    
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Aktifkan tab yang dipilih
+    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+    currentTab = tabId;
+    
+    // Update progress belajar berdasarkan tab yang dikunjungi
+    updateLearningProgress();
+    
+    // Reset pilihan jawaban di kuis
+    resetOptions();
+    
+    // Inisialisasi kuis jika tab kuis yang dipilih
+    if (tabId === 'quiz') {
+        initializeQuiz();
+    }
+}
+
+// Fungsi untuk update progress belajar
+function updateLearningProgress() {
+    // Setiap kali pengguna mengunjungi tab baru, tambah progress
+    const visitedTabs = new Set();
+    document.querySelectorAll('.tab-button').forEach(button => {
+        if (button.classList.contains('visited')) {
+            visitedTabs.add(button.getAttribute('data-tab'));
+        }
+    });
+    
+    // Tandai tab saat ini sebagai sudah dikunjungi
+    document.querySelector(`[data-tab="${currentTab}"]`).classList.add('visited');
+    visitedTabs.add(currentTab);
+    
+    // Hitung progress (maksimal 5 tab)
+    learningProgress = Math.min((visitedTabs.size / 5) * 100, 100);
+    
+    // Update tampilan progress
+    document.getElementById('progress-percent').textContent = `${Math.round(learningProgress)}%`;
+    document.getElementById('learning-progress').style.width = `${learningProgress}%`;
+    
+    // Update tingkat kesulitan berdasarkan progress
+    let difficultyText = "Pemula";
+    if (learningProgress < 30) {
+        difficultyText = "Pemula";
+    } else if (learningProgress < 70) {
+        difficultyText = "Menengah";
+    } else {
+        difficultyText = "Mahir";
+    }
+    document.getElementById('difficulty').textContent = difficultyText;
+}
+
+// Fungsi untuk reset pilihan jawaban
+function resetOptions() {
+    document.querySelectorAll('.option').forEach(option => {
+        option.classList.remove('selected', 'correct', 'incorrect');
+    });
+    
+    document.querySelectorAll('.result').forEach(result => {
+        result.style.display = 'none';
+        result.textContent = '';
+    });
+}
+
+// Fungsi untuk memilih jawaban
+function selectOption(optionElement) {
+    // Reset semua pilihan di tab yang aktif
+    const activeTabOptions = document.querySelector(`#${currentTab} .options`);
+    if (activeTabOptions) {
+        activeTabOptions.querySelectorAll('.option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+    }
+    
+    // Tandai pilihan yang dipilih
+    optionElement.classList.add('selected');
+}
+
+// Fungsi untuk memeriksa jawaban
+function checkAnswer(questionType) {
+    const activeTab = document.getElementById(currentTab);
+    const selectedOption = activeTab.querySelector('.option.selected');
+    
+    if (!selectedOption) {
+        alert('Silakan pilih jawaban terlebih dahulu!');
+        return;
+    }
+    
+    let correctIndex;
+    let questionData;
+    
+    // Tentukan data pertanyaan berdasarkan tipe
+    if (questionType === 'cell') {
+        questionData = quizData.cell[currentQuestionIndex % quizData.cell.length];
+        correctIndex = questionData.correctAnswer;
+    } else if (questionType === 'organ') {
+        questionData = quizData.organ[currentQuestionIndex % quizData.organ.length];
+        correctIndex = questionData.correctAnswer;
+    } else if (questionType === 'classification') {
+        questionData = quizData.classification[currentQuestionIndex % quizData.classification.length];
+        correctIndex = questionData.correctAnswer;
+    }
+    
+    const selectedIndex = parseInt(selectedOption.getAttribute('data-answer').charCodeAt(0) - 97);
+    const isCorrect = selectedIndex === correctIndex;
+    
+    // Tampilkan hasil
+    const resultElement = activeTab.querySelector('.result');
+    if (isCorrect) {
+        resultElement.textContent = "Benar! Jawaban Anda tepat.";
+        resultElement.className = "result correct";
+        userScore += 10;
+        
+        // Update statistik kuis
+        if (currentTab === 'quiz') {
+            correctAnswers++;
+            document.getElementById('correct-answers').textContent = correctAnswers;
+        }
+    } else {
+        const correctAnswerText = String.fromCharCode(97 + correctIndex).toUpperCase() + ". " + questionData.options[correctIndex];
+        resultElement.textContent = `Salah. Jawaban yang benar adalah: ${correctAnswerText}`;
+        resultElement.className = "result incorrect";
+        
+        // Update statistik kuis
+        if (currentTab === 'quiz') {
+            wrongAnswers++;
+            document.getElementById('wrong-answers').textContent = wrongAnswers;
+        }
+    }
+    
+    resultElement.style.display = 'block';
+    
+    // Tandai jawaban yang benar dan salah
+    const options = activeTab.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        if (index === correctIndex) {
+            option.classList.add('correct');
+        } else if (option.classList.contains('selected') && index !== correctIndex) {
+            option.classList.add('incorrect');
+        }
+    });
+    
+    // Update skor
+    document.getElementById('quiz-score').textContent = userScore;
+}
+
+// Fungsi untuk pertanyaan berikutnya
+function nextQuestion(questionType) {
+    currentQuestionIndex++;
+    
+    // Reset tampilan kuis
+    resetOptions();
+    
+    // Tampilkan pertanyaan baru berdasarkan tipe
+    let questionData;
+    if (questionType === 'cell') {
+        questionData = quizData.cell[currentQuestionIndex % quizData.cell.length];
+    } else if (questionType === 'organ') {
+        questionData = quizData.organ[currentQuestionIndex % quizData.organ.length];
+    } else if (questionType === 'classification') {
+        questionData = quizData.classification[currentQuestionIndex % quizData.classification.length];
+    }
+    
+    const activeTab = document.getElementById(currentTab);
+    const questionElement = activeTab.querySelector('.question');
+    const optionsElements = activeTab.querySelectorAll('.option');
+    
+    if (questionElement && questionData) {
+        questionElement.textContent = questionData.question;
+        
+        optionsElements.forEach((option, index) => {
+            option.textContent = `${String.fromCharCode(97 + index).toUpperCase()}. ${questionData.options[index]}`;
+            option.setAttribute('data-answer', String.fromCharCode(97 + index));
+        });
+    }
+}
+
+// Fungsi untuk inisialisasi kuis di tab kuis
+function initializeQuiz() {
+    currentQuestionIndex = 0;
+    correctAnswers = 0;
+    wrongAnswers = 0;
+    questionsAnswered = 0;
+    
+    // Update statistik kuis
+    document.getElementById('correct-answers').textContent = "0";
+    document.getElementById('wrong-answers').textContent = "0";
+    document.getElementById('questions-left').textContent = totalQuestions;
+    
+    // Tampilkan pertanyaan pertama
+    loadQuizQuestion();
+}
+
+// Fungsi untuk memuat pertanyaan kuis
+function loadQuizQuestion() {
+    // Pilih jenis kuis secara acak
+    const quizTypes = ['cell', 'organ', 'classification', 'general'];
+    currentQuizType = quizTypes[Math.floor(Math.random() * quizTypes.length)];
+    
+    const questionData = quizData[currentQuizType][currentQuestionIndex % quizData[currentQuizType].length];
+    
+    const questionElement = document.getElementById('quiz-question');
+    const optionsElements = document.querySelectorAll('#quiz-options .option');
+    
+    questionElement.textContent = questionData.question;
+    
+    optionsElements.forEach((option, index) => {
+        option.textContent = `${String.fromCharCode(97 + index).toUpperCase()}. ${questionData.options[index]}`;
+        option.setAttribute('data-answer', String.fromCharCode(97 + index));
+    });
+    
+    // Reset tampilan
+    resetOptions();
+    const resultElement = document.getElementById('quiz-result');
+    resultElement.style.display = 'none';
+}
+
+// Fungsi untuk memeriksa jawaban kuis
+function checkQuizAnswer() {
+    const selectedOption = document.querySelector('#quiz-options .option.selected');
+    
+    if (!selectedOption) {
+        alert('Silakan pilih jawaban terlebih dahulu!');
+        return;
+    }
+    
+    const questionData = quizData[currentQuizType][currentQuestionIndex % quizData[currentQuizType].length];
+    const correctIndex = questionData.correctAnswer;
+    const selectedIndex = parseInt(selectedOption.getAttribute('data-answer').charCodeAt(0) - 97);
+    const isCorrect = selectedIndex === correctIndex;
+    
+    // Tampilkan hasil
+    const resultElement = document.getElementById('quiz-result');
+    if (isCorrect) {
+        resultElement.textContent = "Benar! Jawaban Anda tepat.";
+        resultElement.className = "result correct";
+        userScore += 10;
+        correctAnswers++;
+        document.getElementById('correct-answers').textContent = correctAnswers;
+    } else {
+        const correctAnswerText = String.fromCharCode(97 + correctIndex).toUpperCase() + ". " + questionData.options[correctIndex];
+        resultElement.textContent = `Salah. Jawaban yang benar adalah: ${correctAnswerText}`;
+        resultElement.className = "result incorrect";
+        wrongAnswers++;
+        document.getElementById('wrong-answers').textContent = wrongAnswers;
+    }
+    
+    resultElement.style.display = 'block';
+    
+    // Tandai jawaban yang benar dan salah
+    const options = document.querySelectorAll('#quiz-options .option');
+    options.forEach((option, index) => {
+        if (index === correctIndex) {
+            option.classList.add('correct');
+        } else if (option.classList.contains('selected') && index !== correctIndex) {
+            option.classList.add('incorrect');
+        }
+    });
+    
+    // Update skor
+    document.getElementById('quiz-score').textContent = userScore;
+    questionsAnswered++;
+    document.getElementById('questions-left').textContent = totalQuestions - questionsAnswered;
+    
+    // Jika sudah menjawab semua pertanyaan
+    if (questionsAnswered >= totalQuestions) {
+        setTimeout(() => {
+            alert(`Kuis selesai! Skor akhir Anda: ${userScore}\nJawaban benar: ${correctAnswers}\nJawaban salah: ${wrongAnswers}`);
+        }, 500);
+    }
+}
+
+// Fungsi untuk pertanyaan kuis berikutnya
+function nextQuizQuestion() {
+    if (questionsAnswered >= totalQuestions) {
+        alert("Kuis sudah selesai! Silakan mulai kuis baru.");
+        return;
+    }
+    
+    currentQuestionIndex++;
+    loadQuizQuestion();
+}
+
+// Inisialisasi event listeners setelah halaman dimuat
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab buttons
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const tabId = button.getAttribute('data-tab');
+            switchTab(tabId);
+        });
+    });
+
+    // Mulai belajar button
+    document.getElementById('start-learning').addEventListener('click', () => {
+        switchTab('cell');
+    });
+
+    // Kuis cepat button
+    document.getElementById('quick-quiz').addEventListener('click', () => {
+        switchTab('quiz');
+    });
+
+    // Organelle labels
+    document.querySelectorAll('.organelle-label').forEach(label => {
+        label.addEventListener('click', () => {
+            const organelle = label.getAttribute('data-organelle');
+            let info = '';
+            
+            switch(organelle) {
+                case 'nucleus':
+                    info = 'Nukleus adalah pusat kendali sel yang mengandung materi genetik (DNA).';
+                    break;
+                case 'mitochondria':
+                    info = 'Mitokondria adalah organel yang berfungsi sebagai tempat respirasi seluler untuk menghasilkan energi (ATP).';
+                    break;
+                case 'golgi':
+                    info = 'Aparatus Golgi berfungsi dalam modifikasi, penyortiran, dan pengemasan protein untuk distribusi.';
+                    break;
+                default:
+                    info = 'Klik bagian sel untuk mempelajari lebih lanjut tentang organel sel.';
+            }
+            
+            alert(`Informasi: ${info}`);
+        });
+    });
+
+    // Pilihan jawaban
+    document.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+            selectOption(option);
+        });
+    });
+
+    // Check answer buttons
+    document.getElementById('check-answer').addEventListener('click', () => {
+        if (currentTab === 'cell') {
+            checkAnswer('cell');
+        }
+    });
+    
+    document.getElementById('check-answer-organ').addEventListener('click', () => {
+        if (currentTab === 'organ') {
+            checkAnswer('organ');
+        }
+    });
+    
+    document.getElementById('check-answer-classification').addEventListener('click', () => {
+        if (currentTab === 'classification') {
+            checkAnswer('classification');
+        }
+    });
+
+    // Next question buttons
+    document.getElementById('next-question').addEventListener('click', () => {
+        if (currentTab === 'cell') {
+            nextQuestion('cell');
+        }
+    });
+    
+    document.getElementById('next-question-organ').addEventListener('click', () => {
+        if (currentTab === 'organ') {
+            nextQuestion('organ');
+        }
+    });
+    
+    document.getElementById('next-question-classification').addEventListener('click', () => {
+        if (currentTab === 'classification') {
+            nextQuestion('classification');
+        }
+    });
+
+    // Kuis check answer button
+    document.getElementById('check-quiz-answer').addEventListener('click', checkQuizAnswer);
+
+    // Kuis next question button
+    document.getElementById('next-quiz-question').addEventListener('click', nextQuizQuestion);
+
+    // Restart quiz button
+    document.getElementById('restart-quiz').addEventListener('click', initializeQuiz);
+
+    // Inisialisasi
+    updateLearningProgress();
+    initializeQuiz();
+    
+    // Tampilkan pesan selamat datang
+    setTimeout(() => {
+        if (currentTab === 'home') {
+            alert("Selamat datang di Game Pembelajaran Biologi! Pilih topik dari menu di sebelah kiri untuk mulai belajar.");
+        }
+    }, 1000);
+});
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1a5319 0%, #4a8c4a 100%);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(to right, #2e7d32, #4caf50);
+    color: white;
+    padding: 25px 30px;
+    text-align: center;
+    border-bottom: 5px solid #1b5e20;
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.game-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 600px;
+}
+
+.sidebar {
+    width: 30%;
+    background-color: #e8f5e9;
+    padding: 25px;
+    border-right: 3px solid #c8e6c9;
+}
+
+.main-content {
+    width: 70%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.tab-button {
+    padding: 16px 20px;
+    background-color: #81c784;
+    color: #1b5e20;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button:hover {
+    background-color: #66bb6a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.tab-button.active {
+    background-color: #388e3c;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+    background-color: #a5d6a7;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-info h3 {
+    color: #1b5e20;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.score {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.tab-content {
+    flex-grow: 1;
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: #2e7d32;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #c8e6c9;
+    padding-bottom: 10px;
+}
+
+.tab-content p {
+    line-height: 1.6;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+.quiz-container {
+    background-color: #f1f8e9;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+}
+
+.question {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #1b5e20;
+}
+
+.options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.option {
+    background-color: white;
+    padding: 18px 20px;
+    border: 2px solid #c8e6c9;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.1rem;
+}
+
+.option:hover {
+    background-color: #e8f5e9;
+    border-color: #81c784;
+}
+
+.option.selected {
+    background-color: #c8e6c9;
+    border-color: #388e3c;
+}
+
+.option.correct {
+    background-color: #a5d6a7;
+    border-color: #2e7d32;
+    color: #1b5e20;
+}
+
+.option.incorrect {
+    background-color: #ffcdd2;
+    border-color: #c62828;
+    color: #b71c1c;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #388e3c;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: #ffb74d;
+    color: #5d4037;
+}
+
+.btn-secondary:hover {
+    background-color: #ff9800;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: none;
+}
+
+.result.correct {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border-left: 5px solid #4caf50;
+}
+
+.result.incorrect {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left: 5px solid #f44336;
+}
+
+.cell-diagram {
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+.cell {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border-radius: 50%;
+    background-color: #ffecb3;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.nucleus {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #f48fb1;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mitochondria {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    background-color: #a5d6a7;
+    border-radius: 50%;
+    top: 30%;
+    left: 70%;
+}
+
+.golgi {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background-color: #90caf9;
+    border-radius: 10px;
+    top: 70%;
+    left: 20%;
+}
+
+.organelle-label {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.organelle-label:hover {
+    border-color: #4caf50;
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2e7d32;
+    color: white;
+    margin-top: 20px;
+}
+
+.game-instructions {
+    background-color: #f1f8e9;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    border-left: 5px solid #4caf50;
+}
+
+.game-instructions h3 {
+    color: #1b5e20;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructions-list {
+    padding-left: 20px;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .sidebar, .main-content {
+        width: 100%;
+    }
+    
+    .sidebar {
+        border-right: none;
+        border-bottom: 3px solid #c8e6c9;
+    }
+    
+    .tab-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .tab-button {
+        flex: 1;
+        min-width: 150px;
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .tab-button {
+        min-width: 120px;
+        font-size: 1rem;
+        padding: 14px 16px;
+    }
+    
+    .cell {
+        width: 250px;
+        height: 250px;
+    }
+}

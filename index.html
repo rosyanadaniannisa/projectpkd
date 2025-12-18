@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Pembelajaran Biologi Interaktif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-seedling"></i> Game Pembelajaran Biologi</h1>
+            <p class="subtitle">Belajar biologi dengan cara yang menyenangkan dan interaktif melalui kuis, diagram, dan simulasi</p>
+        </header>
+        
+        <div class="game-container">
+            <div class="sidebar">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="home">
+                        <i class="fas fa-home"></i> Beranda
+                    </button>
+                    <button class="tab-button" data-tab="cell">
+                        <i class="fas fa-microscope"></i> Struktur Sel
+                    </button>
+                    <button class="tab-button" data-tab="organ">
+                        <i class="fas fa-heartbeat"></i> Sistem Organ
+                    </button>
+                    <button class="tab-button" data-tab="classification">
+                        <i class="fas fa-tree"></i> Klasifikasi Makhluk Hidup
+                    </button>
+                    <button class="tab-button" data-tab="quiz">
+                        <i class="fas fa-question-circle"></i> Kuis Biologi
+                    </button>
+                </div>
+                
+                <div class="user-info">
+                    <h3><i class="fas fa-user-graduate"></i> Statistik Pembelajaran</h3>
+                    <div class="score">
+                        <span>Skor Kuis:</span>
+                        <span id="quiz-score">0</span>
+                    </div>
+                    <div class="score">
+                        <span>Tingkat Kesulitan:</span>
+                        <span id="difficulty">Pemula</span>
+                    </div>
+                    <div class="score">
+                        <span>Progres Belajar:</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="learning-progress"></div>
+                    </div>
+                </div>
+                
+                <div class="game-instructions">
+                    <h3><i class="fas fa-info-circle"></i> Cara Bermain</h3>
+                    <ol class="instructions-list">
+                        <li>Pilih topik pembelajaran dari menu di atas</li>
+                        <li>Pelajari materi yang disajikan</li>
+                        <li>Ikuti kuis untuk menguji pemahaman</li>
+                        <li>Klik bagian diagram sel untuk informasi detail</li>
+                        <li>Lacak progres belajar Anda di panel statistik</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="main-content">
+                <!-- Beranda -->
+                <div id="home" class="tab-content active">
+                    <h2>Selamat Datang di Game Pembelajaran Biologi!</h2>
+                    <p>Biologi adalah ilmu yang mempelajari tentang kehidupan dan makhluk hidup. Melalui game interaktif ini, Anda akan belajar tentang berbagai konsep biologi dengan cara yang menyenangkan.</p>
+                    
+                    <div class="quiz-container">
+                        <h3>Mari kita mulai perjalanan belajar biologi!</h3>
+                        <p>Pilihlah topik dari menu di sebelah kiri untuk mulai belajar. Setiap topik berisi:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
+                            <li>Penjelasan materi yang mudah dipahami</li>
+                            <li>Diagram dan ilustrasi interaktif</li>
+                            <li>Kuis untuk menguji pemahaman Anda</li>
+                            <li>Simulasi dan aktivitas pembelajaran</li>
+                        </ul>
+                        <p style="margin-top: 15px;">Biologi tidak lagi membosankan dengan pendekatan pembelajaran interaktif ini!</p>
+                        
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="start-learning">
+                                <i class="fas fa-play"></i> Mulai Belajar
+                            </button>
+                            <button class="btn btn-secondary" id="quick-quiz">
+                                <i class="fas fa-bolt"></i> Kuis Cepat
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="cell-diagram">
+                        <div class="cell">
+                            <div class="nucleus"></div>
+                            <div class="mitochondria"></div>
+                            <div class="golgi"></div>
+                            <div class="organelle-label" style="top: 50%; left: 50%; transform: translate(-50%, -80px);">Nukleus</div>
+                            <div class="organelle-label" style="top: 30%; left: 70%; transform: translateX(-50%);">Mitokondria</div>
+                            <div class="organelle-label" style="top: 70%; left: 20%; transform: translateX(-50%);">Aparatus Golgi</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Struktur Sel -->
+                <div id="cell" class="tab-content">
+                    <h2>Struktur Sel</h2>
+                    <p>Sel adalah unit struktural dan fungsional terkecil dari makhluk hidup. Setiap sel memiliki organel-organel yang memiliki fungsi khusus untuk mendukung kehidupan.</p>
+                    
+                    <div class="cell-diagram">
+                        <div class="cell">
+                            <div class="nucleus"></div>
+                            <div class="mitochondria"></div>
+                            <div class="golgi"></div>
+                            <div class="organelle-label" style="top: 50%; left: 50%; transform: translate(-50%, -80px);" data-organelle="nucleus">Nukleus</div>
+                            <div class="organelle-label" style="top: 30%; left: 70%; transform: translateX(-50%);" data-organelle="mitochondria">Mitokondria</div>
+                            <div class="organelle-label" style="top: 70%; left: 20%; transform: translateX(-50%);" data-organelle="golgi">Aparatus Golgi</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-container">
+                        <div class="question">Organel manakah yang berfungsi sebagai pusat kendali sel?</div>
+                        <div class="options">
+                            <div class="option" data-answer="a">A. Mitokondria</div>
+                            <div class="option" data-answer="b">B. Nukleus</div>
+                            <div class="option" data-answer="c">C. Ribosom</div>
+                            <div class="option" data-answer="d">D. Aparatus Golgi</div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-answer">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-question">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                </div>
+                
+                <!-- Sistem Organ -->
+                <div id="organ" class="tab-content">
+                    <h2>Sistem Organ pada Manusia</h2>
+                    <p>Tubuh manusia terdiri dari berbagai sistem organ yang bekerja sama untuk mempertahankan homeostasis. Setiap sistem memiliki fungsi khusus yang vital bagi kelangsungan hidup.</p>
+                    
+                    <div class="quiz-container">
+                        <div class="question">Sistem organ manakah yang bertanggung jawab untuk pertukaran gas oksigen dan karbon dioksida?</div>
+                        <div class="options">
+                            <div class="option" data-answer="a">A. Sistem Pencernaan</div>
+                            <div class="option" data-answer="b">B. Sistem Pernapasan</div>
+                            <div class="option" data-answer="c">C. Sistem Saraf</div>
+                            <div class="option" data-answer="d">D. Sistem Ekskresi</div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-answer-organ">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-question-organ">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; background-color: #e3f2fd; padding: 20px; border-radius: 15px;">
+                        <h3 style="color: #1565c0;">Fakta Menarik tentang Sistem Organ:</h3>
+                        <ul style="margin-left: 20px; margin-top: 10px; line-height: 1.6;">
+                            <li>Sistem pencernaan manusia dapat mencapai panjang 9 meter dari mulut hingga anus</li>
+                            <li>Jantung berdetak sekitar 100.000 kali per hari</li>
+                            <li>Otak manusia mengandung sekitar 86 miliar neuron</li>
+                            <li>Paru-paru memiliki luas permukaan sekitar 70 m², setara dengan setengah lapangan tenis</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Klasifikasi Makhluk Hidup -->
+                <div id="classification" class="tab-content">
+                    <h2>Klasifikasi Makhluk Hidup</h2>
+                    <p>Klasifikasi makhluk hidup adalah pengelompokan organisme berdasarkan persamaan dan perbedaan karakteristiknya. Sistem klasifikasi modern didasarkan pada taksonomi Linnaeus.</p>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                        <div style="flex: 1; min-width: 250px; background-color: #f3e5f5; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: #7b1fa2;">Kingdom Animalia</h3>
+                            <p>Multiseluler, heterotrof, dapat bergerak aktif. Contoh: manusia, burung, ikan, serangga.</p>
+                        </div>
+                        <div style="flex: 1; min-width: 250px; background-color: #e8f5e9; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: #2e7d32;">Kingdom Plantae</h3>
+                            <p>Multiseluler, autotrof (fotosintesis), tidak dapat bergerak aktif. Contoh: pohon, rumput, lumut.</p>
+                        </div>
+                        <div style="flex: 1; min-width: 250px; background-color: #fff3e0; padding: 20px; border-radius: 15px;">
+                            <h3 style="color: #ef6c00;">Kingdom Fungi</h3>
+                            <p>Multiseluler atau uniseluler, heterotrof, dinding sel dari kitin. Contoh: jamur, ragi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-container" style="margin-top: 30px;">
+                        <div class="question">Manakah dari berikut ini yang termasuk dalam Kingdom Plantae?</div>
+                        <div class="options">
+                            <div class="option" data-answer="a">A. Jamur merang</div>
+                            <div class="option" data-answer="b">B. Pohon mangga</div>
+                            <div class="option" data-answer="c">C. Bakteri Escherichia coli</div>
+                            <div class="option" data-answer="d">D. Harimau sumatera</div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-answer-classification">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-question-classification">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result"></div>
+                    </div>
+                </div>
+                
+                <!-- Kuis Biologi -->
+                <div id="quiz" class="tab-content">
+                    <h2>Kuis Biologi Interaktif</h2>
+                    <p>Uji pemahaman Anda tentang konsep-konsep biologi dengan kuis interaktif ini. Jawablah pertanyaan-pertanyaan berikut untuk mengukur tingkat pengetahuan Anda.</p>
+                    
+                    <div class="quiz-container">
+                        <div id="quiz-question-container">
+                            <div class="question" id="quiz-question">Organel sel manakah yang berfungsi sebagai tempat respirasi seluler?</div>
+                            <div class="options" id="quiz-options">
+                                <div class="option" data-answer="a">A. Lisosom</div>
+                                <div class="option" data-answer="b">B. Mitokondria</div>
+                                <div class="option" data-answer="c">C. Retikulum Endoplasma</div>
+                                <div class="option" data-answer="d">D. Badan Golgi</div>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" id="check-quiz-answer">
+                                <i class="fas fa-check"></i> Periksa Jawaban
+                            </button>
+                            <button class="btn btn-secondary" id="next-quiz-question">
+                                <i class="fas fa-forward"></i> Pertanyaan Berikutnya
+                            </button>
+                        </div>
+                        <div class="result" id="quiz-result"></div>
+                    </div>
+                    
+                    <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="background-color: #e1f5fe; padding: 15px; border-radius: 15px; flex: 1; margin-right: 20px;">
+                            <h4 style="color: #0277bd;">Statistik Kuis</h4>
+                            <p>Jawaban Benar: <span id="correct-answers">0</span></p>
+                            <p>Jawaban Salah: <span id="wrong-answers">0</span></p>
+                            <p>Pertanyaan Tersisa: <span id="questions-left">5</span></p>
+                        </div>
+                        <button class="btn btn-primary" id="restart-quiz" style="height: fit-content;">
+                            <i class="fas fa-redo"></i> Mulai Kuis Baru
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Game Pembelajaran Biologi Interaktif &copy; 2023 | Dibuat untuk pembelajaran HTML, CSS, dan JavaScript</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Ilustrasi dan konten edukasi biologi untuk tujuan pembelajaran</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
